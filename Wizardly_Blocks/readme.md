@@ -4,3 +4,6 @@ Concepts learned and used :-
 * Canvas and UI components, game event handling.
 * Learning about GameObjects and how to handle the properties.
 * Sprites, prefabs, materials, particle effect etc.
+
+## Demo -->
+![Wizardly Blocks Deemo](wizardlyDemo.gif)
