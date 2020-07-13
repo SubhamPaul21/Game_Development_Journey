@@ -1,6 +1,6 @@
 Game made for GMTK game jam -> The biggest game jam in itch.io
 
-<a href='https://team-bois.itch.io/cheeto-wizzard-chadslayer' id='installation-guide' class='anchor' aria-hidden='true' target='_blank'>Link to the game</a>
+<a href='https://team-bois.itch.io/cheeto-wizzard-chadslayer' target='_blank'>Link to the game</a>
 
 Status: Still in development.
 
