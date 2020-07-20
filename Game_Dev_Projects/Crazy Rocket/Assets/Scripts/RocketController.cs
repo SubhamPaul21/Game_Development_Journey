@@ -24,6 +24,20 @@ public class RocketController : MonoBehaviour
         Rotate();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Friendly":
+                print("Safe");
+                break;
+
+            default:
+                print("Dead");
+                break;
+        }
+    }
+
     private void Thrust()
     {
         float thrustThisFrame = thrustSpeed * Time.deltaTime;
