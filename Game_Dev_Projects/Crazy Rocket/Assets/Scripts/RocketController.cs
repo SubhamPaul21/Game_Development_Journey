@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RocketController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class RocketController : MonoBehaviour
     [SerializeField] private float cylinderSpeed = 100f;
     [SerializeField] private float thrustSpeed = 1000f;
 
+    enum State { Alive, Dying, Transitioning }
+    State state = State.Alive;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,22 +24,50 @@ public class RocketController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Thrust();
-        Rotate();
+        if (state == State.Alive)
+        {
+            Thrust();
+            Rotate();
+        }
+        else
+        {
+            StopRocketSound();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (state != State.Alive) { return; }
+
         switch (collision.gameObject.tag)
         {
             case "Friendly":
-                print("Safe");
+                break;
+
+            case "Finish":
+                state = State.Transitioning;
+                Invoke("LoadNextLevel", 2f);
+                //GameManager.Instance.LoadNextLevel();
                 break;
 
             default:
-                print("Dead");
+                state = State.Dying;
+                Invoke("LoadStartLevel", 2f);
+                //GameManager.Instance.LoadStartLevel();
                 break;
         }
+    }
+
+    private void StopRocketSound() { audioSource.Stop(); }
+
+    private void LoadNextLevel()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    private void LoadStartLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void Thrust()
@@ -51,7 +83,7 @@ public class RocketController : MonoBehaviour
         }
         else
         {
-            audioSource.Stop();
+            StopRocketSound();
         }
     }
 
