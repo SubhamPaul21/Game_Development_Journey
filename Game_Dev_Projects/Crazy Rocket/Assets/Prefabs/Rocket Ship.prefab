@@ -63,11 +63,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 88acf53c9db160b45a86a55f9b9b0680, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -163,6 +163,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cylinderSpeed: 50
   thrustSpeed: 800
+  thrustClip: {fileID: 8300000, guid: 88acf53c9db160b45a86a55f9b9b0680, type: 3}
+  winLevelClip: {fileID: 8300000, guid: e253acc70b2a4704eab8fcd7a6058e9a, type: 3}
+  explodeClip: {fileID: 8300000, guid: c8204fb3762f4704eb029968dbc2cdce, type: 3}
 --- !u!1 &4841413265203341562
 GameObject:
   m_ObjectHideFlags: 0

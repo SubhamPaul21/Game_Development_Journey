@@ -10,6 +10,9 @@ public class RocketController : MonoBehaviour
     // state variables
     [SerializeField] private float cylinderSpeed = 100f;
     [SerializeField] private float thrustSpeed = 1000f;
+    [SerializeField] private AudioClip thrustClip;
+    [SerializeField] private AudioClip winLevelClip;
+    [SerializeField] private AudioClip explodeClip;
 
     enum State { Alive, Dying, Transitioning }
     State state = State.Alive;
@@ -29,10 +32,6 @@ public class RocketController : MonoBehaviour
             Thrust();
             Rotate();
         }
-        else
-        {
-            StopRocketSound();
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -45,17 +44,31 @@ public class RocketController : MonoBehaviour
                 break;
 
             case "Finish":
-                state = State.Transitioning;
-                Invoke("LoadNextLevel", 2f);
+                TransitionToNextLevel();
                 //GameManager.Instance.LoadNextLevel();
                 break;
 
             default:
-                state = State.Dying;
-                Invoke("LoadStartLevel", 2f);
+                DeathOnCollision();
                 //GameManager.Instance.LoadStartLevel();
                 break;
         }
+    }
+
+    private void DeathOnCollision()
+    {
+        state = State.Dying;
+        StopRocketSound();
+        audioSource.PlayOneShot(explodeClip);
+        Invoke("LoadStartLevel", 2f);
+    }
+
+    private void TransitionToNextLevel()
+    {
+        state = State.Transitioning;
+        StopRocketSound();
+        audioSource.PlayOneShot(winLevelClip);
+        Invoke("LoadNextLevel", 2f);
     }
 
     private void StopRocketSound() { audioSource.Stop(); }
@@ -77,7 +90,7 @@ public class RocketController : MonoBehaviour
         {
             if (!audioSource.isPlaying)
             {
-                audioSource.Play();
+                audioSource.PlayOneShot(thrustClip);
             }
             rocketRigidBody.AddRelativeForce(Vector3.up * thrustThisFrame);
         }
