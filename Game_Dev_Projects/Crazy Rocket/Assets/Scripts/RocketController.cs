@@ -8,12 +8,19 @@ public class RocketController : MonoBehaviour
     private AudioSource audioSource;
 
     // state variables
+    [Header("Speed")]
     [SerializeField] private float cylinderSpeed = 100f;
     [SerializeField] private float thrustSpeed = 1000f;
+
+    [Header("Audio Clips")]
     [SerializeField] private AudioClip thrustClip;
     [SerializeField] private AudioClip winLevelClip;
     [SerializeField] private AudioClip explodeClip;
 
+    [Header("Particle Effects")]
+    [SerializeField] private ParticleSystem thrustParticles;
+    [SerializeField] private ParticleSystem winLevelParticles;
+    [SerializeField] private ParticleSystem explodeParticles;
     enum State { Alive, Dying, Transitioning }
     State state = State.Alive;
 
@@ -60,6 +67,8 @@ public class RocketController : MonoBehaviour
         state = State.Dying;
         StopRocketSound();
         audioSource.PlayOneShot(explodeClip);
+        thrustParticles.Stop();
+        explodeParticles.Play();
         Invoke("LoadStartLevel", 2f);
     }
 
@@ -68,6 +77,8 @@ public class RocketController : MonoBehaviour
         state = State.Transitioning;
         StopRocketSound();
         audioSource.PlayOneShot(winLevelClip);
+        thrustParticles.Stop();
+        winLevelParticles.Play();
         Invoke("LoadNextLevel", 2f);
     }
 
@@ -75,11 +86,13 @@ public class RocketController : MonoBehaviour
 
     private void LoadNextLevel()
     {
+        winLevelParticles.Stop();
         SceneManager.LoadScene(1);
     }
 
     private void LoadStartLevel()
     {
+        explodeParticles.Stop();
         SceneManager.LoadScene(0);
     }
 
@@ -92,10 +105,12 @@ public class RocketController : MonoBehaviour
             {
                 audioSource.PlayOneShot(thrustClip);
             }
+            thrustParticles.Play();
             rocketRigidBody.AddRelativeForce(Vector3.up * thrustThisFrame);
         }
         else
         {
+            thrustParticles.Stop();
             StopRocketSound();
         }
     }
