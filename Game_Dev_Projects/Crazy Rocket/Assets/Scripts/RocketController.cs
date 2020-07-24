@@ -118,7 +118,7 @@ public class RocketController : MonoBehaviour
     private void Rotate()
     {
         float cylinderSpeedThisFrame = cylinderSpeed * Time.deltaTime;
-        rocketRigidBody.freezeRotation = true; //take manual control of rotation
+        rocketRigidBody.angularVelocity = Vector3.zero;
         if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(Vector3.forward * cylinderSpeedThisFrame);
@@ -127,6 +127,5 @@ public class RocketController : MonoBehaviour
         {
             transform.Rotate(Vector3.back * cylinderSpeedThisFrame);
         }
-        rocketRigidBody.freezeRotation = false; // resume physics control of rotation
     }
 }
