@@ -5,7 +5,21 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float speed = 20f;
+
+    [SerializeField] float speed = 25f;
+    
+    [Header("Clamped Values")]
+    [SerializeField] float xClamp = 10f;
+    [SerializeField] float yClamp = 5f;
+
+    [Header("Rotation Factors")]
+    [SerializeField] float positionPitchFactor = -2f;
+    [SerializeField] float controlPitchFactor = 2f;
+    [SerializeField] float positionYawFactor = -1f;
+    [SerializeField] float controlRollFactor = 20f;
+
+
+    float horizontalThrow, verticalThrow;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,22 +29,36 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovementInput();
+        ProcessTranslation();
+        ProcessRotation();
     }
 
-    private void MovementInput()
+    private void ProcessRotation()
+    {
+        // Pitch
+        float pitchPosition = transform.localPosition.y * positionPitchFactor;
+        float pitchControl = horizontalThrow * controlPitchFactor;
+        float pitch =  pitchPosition + pitchControl;
+        // Yaw
+        float yaw = transform.localPosition.x * positionYawFactor;
+        // Roll
+        float roll = horizontalThrow * controlRollFactor;
+
+        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+    private void ProcessTranslation()
     {
         // X Position
-        float horizontalThrow = CrossPlatformInputManager.GetAxis("Horizontal");
+        horizontalThrow = CrossPlatformInputManager.GetAxis("Horizontal");
         float xOffsetValue = speed * horizontalThrow * Time.deltaTime;
         float rawXPos = transform.localPosition.x + xOffsetValue;
-        float clampedXPos = Mathf.Clamp(rawXPos, -12f, 12f);
+        float clampedXPos = Mathf.Clamp(rawXPos, -xClamp, xClamp);
 
         // Y Position
-        float verticalThrow = CrossPlatformInputManager.GetAxis("Vertical");
+        verticalThrow = CrossPlatformInputManager.GetAxis("Vertical");
         float yOffsetValue = speed * verticalThrow * Time.deltaTime;
         float rawYPos = transform.localPosition.y + yOffsetValue;
-        float clampedYPos = Mathf.Clamp(rawYPos, -6f, 6f);
+        float clampedYPos = Mathf.Clamp(rawYPos, -yClamp, yClamp);
 
         // Set the local position
         transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
