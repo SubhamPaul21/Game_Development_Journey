@@ -3,34 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] float speed = 25f;
-    
-    [Header("Clamped Values")]
-    [SerializeField] float xClamp = 10f;
+    [Header("General")]
+    [SerializeField] float controlSpeed = 25f;
+    [SerializeField] float xClamp = 11f;
     [SerializeField] float yClamp = 5f;
 
-    [Header("Rotation Factors")]
-    [SerializeField] float positionPitchFactor = -2f;
-    [SerializeField] float controlPitchFactor = 2f;
-    [SerializeField] float positionYawFactor = -1f;
-    [SerializeField] float controlRollFactor = 20f;
+    [Header("Position Factors")]
+    [SerializeField] float positionPitchFactor = -5f;
+    [SerializeField] float positionYawFactor = 3.5f;
 
+    [Header("Control Factors")]
+    [SerializeField] float controlPitchFactor = 2f;
+    [SerializeField] float controlRollFactor = 25f;
 
     float horizontalThrow, verticalThrow;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    bool isPlayerDead = false;
     // Update is called once per frame
     void Update()
     {
-        ProcessTranslation();
-        ProcessRotation();
+        if (!isPlayerDead)
+        {
+            ProcessTranslation();
+            ProcessRotation();
+        }
     }
 
     private void ProcessRotation()
@@ -50,13 +48,13 @@ public class Player : MonoBehaviour
     {
         // X Position
         horizontalThrow = CrossPlatformInputManager.GetAxis("Horizontal");
-        float xOffsetValue = speed * horizontalThrow * Time.deltaTime;
+        float xOffsetValue = controlSpeed * horizontalThrow * Time.deltaTime;
         float rawXPos = transform.localPosition.x + xOffsetValue;
         float clampedXPos = Mathf.Clamp(rawXPos, -xClamp, xClamp);
 
         // Y Position
         verticalThrow = CrossPlatformInputManager.GetAxis("Vertical");
-        float yOffsetValue = speed * verticalThrow * Time.deltaTime;
+        float yOffsetValue = controlSpeed * verticalThrow * Time.deltaTime;
         float rawYPos = transform.localPosition.y + yOffsetValue;
         float clampedYPos = Mathf.Clamp(rawYPos, -yClamp, yClamp);
 
@@ -64,4 +62,9 @@ public class Player : MonoBehaviour
         transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
     }
 
+    private void StopMovement() // called by string reference
+    {
+        isPlayerDead = true;
+        print("CollisionHandler informed to stop movement");
+    }
 }
