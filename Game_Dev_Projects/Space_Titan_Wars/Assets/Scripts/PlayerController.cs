@@ -65,6 +65,5 @@ public class PlayerController : MonoBehaviour
     private void StopMovement() // called by string reference
     {
         isPlayerDead = true;
-        print("CollisionHandler informed to stop movement");
     }
 }
