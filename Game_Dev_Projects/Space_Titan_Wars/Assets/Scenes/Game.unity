@@ -217,6 +217,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 3033248822468867293, guid: a3359498d9a6cd145b76164c2efb9260,
     type: 3}
   explosionContainer: {fileID: 1149340866}
+  scorePerHit: 20
 --- !u!114 &85945997 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5795975557464615481, guid: 0183ca7c77e8b514097c98dcdd019bc0,
@@ -325,6 +326,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 3033248822468867293, guid: a3359498d9a6cd145b76164c2efb9260,
     type: 3}
   explosionContainer: {fileID: 1149340866}
+  scorePerHit: 20
 --- !u!1 &240125480 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1238095480485456, guid: bf374732b0ea2c34daa340dc2de7f746,
@@ -346,6 +348,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 3033248822468867293, guid: a3359498d9a6cd145b76164c2efb9260,
     type: 3}
   explosionContainer: {fileID: 1149340866}
+  scorePerHit: 15
 --- !u!1 &322592620
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +360,7 @@ GameObject:
   - component: {fileID: 322592621}
   - component: {fileID: 322592623}
   - component: {fileID: 322592622}
+  - component: {fileID: 322592624}
   m_Layer: 5
   m_Name: Score Text
   m_TagString: Untagged
@@ -424,6 +428,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322592620}
   m_CullTransparentMesh: 0
+--- !u!114 &322592624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322592620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e75609d352f39614d839c8d0128ea7cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &342671672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -520,6 +536,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 3033248822468867293, guid: a3359498d9a6cd145b76164c2efb9260,
     type: 3}
   explosionContainer: {fileID: 1149340866}
+  scorePerHit: 20
 --- !u!1 &368893013 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1074994750746910, guid: 6d7afa73fcb1fce4cb4b65361a29bcbd,
@@ -541,6 +558,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 3033248822468867293, guid: a3359498d9a6cd145b76164c2efb9260,
     type: 3}
   explosionContainer: {fileID: 1149340866}
+  scorePerHit: 30
 --- !u!1 &422997304
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,10 +607,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -784,6 +802,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 3033248822468867293, guid: a3359498d9a6cd145b76164c2efb9260,
     type: 3}
   explosionContainer: {fileID: 1149340866}
+  scorePerHit: 30
 --- !u!1001 &917708987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -933,6 +952,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 3033248822468867293, guid: a3359498d9a6cd145b76164c2efb9260,
     type: 3}
   explosionContainer: {fileID: 1149340866}
+  scorePerHit: 30
 --- !u!1 &1149340865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,6 +1344,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 3033248822468867293, guid: a3359498d9a6cd145b76164c2efb9260,
     type: 3}
   explosionContainer: {fileID: 1149340866}
+  scorePerHit: 20
 --- !u!1001 &1845252296
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1409,6 +1430,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 3033248822468867293, guid: a3359498d9a6cd145b76164c2efb9260,
     type: 3}
   explosionContainer: {fileID: 1149340866}
+  scorePerHit: 30
 --- !u!1 &1937838399
 GameObject:
   m_ObjectHideFlags: 0

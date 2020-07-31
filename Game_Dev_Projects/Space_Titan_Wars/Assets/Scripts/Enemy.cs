@@ -6,9 +6,13 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] Transform explosionContainer;
+    [SerializeField] int scorePerHit = 10;
+
+    ScoreBoard scoreBoard;
     // Start is called before the first frame update
     void Start()
     {
+        scoreBoard = FindObjectOfType<ScoreBoard>();
         AddNonTriggerBoxCollider();
     }
 
@@ -22,6 +26,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.name == "Bullet Right" || other.name == "Bullet Left")
         {
+            scoreBoard.ScoreHit(scorePerHit);
             InstantiateExplosion();
             Destroy(gameObject);
         }
