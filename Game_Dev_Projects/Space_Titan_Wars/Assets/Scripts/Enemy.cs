@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] GameObject explosionPrefab;
+    [SerializeField] Transform explosionContainer;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,14 @@ public class Enemy : MonoBehaviour
     {
         if (other.name == "Bullet Right" || other.name == "Bullet Left")
         {
+            InstantiateExplosion();
             Destroy(gameObject);
         }
+    }
+
+    private void InstantiateExplosion()
+    {
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        explosion.transform.parent = explosionContainer;
     }
 }
