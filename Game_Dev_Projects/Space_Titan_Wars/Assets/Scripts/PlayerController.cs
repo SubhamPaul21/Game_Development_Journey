@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float controlSpeed = 25f;
     [SerializeField] float xClamp = 11f;
     [SerializeField] float yClamp = 5f;
+    [SerializeField] GameObject[] guns;
 
     [Header("Position Factors")]
     [SerializeField] float positionPitchFactor = -5f;
@@ -28,22 +29,10 @@ public class PlayerController : MonoBehaviour
         {
             ProcessTranslation();
             ProcessRotation();
+            ProcessFiring();
         }
     }
 
-    private void ProcessRotation()
-    {
-        // Pitch
-        float pitchPosition = transform.localPosition.y * positionPitchFactor;
-        float pitchControl = horizontalThrow * controlPitchFactor;
-        float pitch =  pitchPosition + pitchControl;
-        // Yaw
-        float yaw = transform.localPosition.x * positionYawFactor;
-        // Roll
-        float roll = horizontalThrow * controlRollFactor;
-
-        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
-    }
     private void ProcessTranslation()
     {
         // X Position
@@ -60,6 +49,48 @@ public class PlayerController : MonoBehaviour
 
         // Set the local position
         transform.localPosition = new Vector3(clampedXPos, clampedYPos, transform.localPosition.z);
+    }
+
+    private void ProcessRotation()
+    {
+        // Pitch
+        float pitchPosition = transform.localPosition.y * positionPitchFactor;
+        float pitchControl = horizontalThrow * controlPitchFactor;
+        float pitch =  pitchPosition + pitchControl;
+        // Yaw
+        float yaw = transform.localPosition.x * positionYawFactor;
+        // Roll
+        float roll = horizontalThrow * controlRollFactor;
+
+        transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    private void ProcessFiring()
+    {
+        if (CrossPlatformInputManager.GetButton("Fire"))
+        {
+            ActivateGuns();
+        }
+        else
+        {
+            DeactiveGuns();
+        }
+    }
+
+    private void ActivateGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(true);
+        }
+    }
+
+    private void DeactiveGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(false);
+        }
     }
 
     private void StopMovement() // called by string reference

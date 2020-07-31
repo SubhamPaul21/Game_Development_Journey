@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] Transform explosionContainer;
     [SerializeField] int scorePerHit = 10;
+    [SerializeField] int maxHits = 10;
 
     ScoreBoard scoreBoard;
     // Start is called before the first frame update
@@ -24,17 +25,26 @@ public class Enemy : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.name == "Bullet Right" || other.name == "Bullet Left")
+        if (other.name == "Gun Right" || other.name == "Gun Left")
         {
-            scoreBoard.ScoreHit(scorePerHit);
-            InstantiateExplosion();
-            Destroy(gameObject);
+            ProcessHit();
+            if (maxHits <= 0)
+            {
+                KillEnemy();
+            }
         }
     }
 
-    private void InstantiateExplosion()
+    private void ProcessHit()
+    {
+        scoreBoard.ScoreHit(scorePerHit);
+        maxHits--;
+    }
+
+    private void KillEnemy()
     {
         GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         explosion.transform.parent = explosionContainer;
+        Destroy(gameObject);
     }
 }

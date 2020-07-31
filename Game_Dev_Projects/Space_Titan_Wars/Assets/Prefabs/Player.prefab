@@ -130,6 +130,9 @@ MonoBehaviour:
   controlSpeed: 25
   xClamp: 10
   yClamp: 5
+  guns:
+  - {fileID: 4748258972866452018}
+  - {fileID: 992687831231234149}
   positionPitchFactor: -5
   positionYawFactor: 3.5
   controlPitchFactor: 2
@@ -159,7 +162,7 @@ GameObject:
   - component: {fileID: 8282852308967279449}
   - component: {fileID: 6634612466139077962}
   m_Layer: 0
-  m_Name: Bullet Left
+  m_Name: Gun Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4913,7 +4916,7 @@ GameObject:
   - component: {fileID: 7013740891257164732}
   - component: {fileID: 1650630856523239575}
   m_Layer: 0
-  m_Name: Bullet Right
+  m_Name: Gun Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
