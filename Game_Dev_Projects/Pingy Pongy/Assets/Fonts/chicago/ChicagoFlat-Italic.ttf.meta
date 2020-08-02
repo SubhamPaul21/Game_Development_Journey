@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: bcbf9c6999da8f04f9540d228b6e1e68
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Chicago Flat
+  fontNames:
+  - Chicago Flat
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a878a2e710267c54183708f80a997ad7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

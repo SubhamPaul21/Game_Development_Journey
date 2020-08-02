@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 6c0ec5b88c62fb24787170dbb6967b70
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Chicago Neon
+  fontNames:
+  - Chicago Neon
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c6395debdbd7043488305d0ecc356b1e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
