@@ -2,7 +2,7 @@
 
 public class BallController : MonoBehaviour
 {
-    [SerializeField] float force = 3f;
+    [SerializeField] float force = 4f;
     Rigidbody2D ballRigidBody;
     Vector2[] ballPosArray = { Vector2.up, Vector2.down };
     // Start is called before the first frame update
@@ -16,7 +16,7 @@ public class BallController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         Vector2 reverseBallPos = collision.gameObject.name == "Player 1" ? Vector2.up : Vector2.down;
-        float randomForce = Random.Range(2, 4);
+        float randomForce = Random.Range(3, 6);
         ballRigidBody.AddForce(reverseBallPos * randomForce, ForceMode2D.Impulse);
     }
 }
