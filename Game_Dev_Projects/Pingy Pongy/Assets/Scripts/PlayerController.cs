@@ -1,7 +1,6 @@
-﻿using Photon.Realtime;
+﻿using Photon.Pun;
+using Photon.Realtime;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,12 +8,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float playerSpeed = 30f;
     [SerializeField] float xClampThreshold = 2f;
 
+    string playerName = "";
     Rigidbody2D playerRigidBody;
     float dirX;
+    PhotonView photonView;
     // Start is called before the first frame update
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody2D>();
+        photonView = GetComponent<PhotonView>();
+        playerName = photonView.Owner.NickName;
+        gameObject.name = playerName;
     }
 
     // Update is called once per frame
@@ -25,15 +29,23 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ProcessPlayerVelocity();
+        //ProcessPlayerVelocity();
     }
 
     private void ProcessPlayerTranslation()
     {
         // Movement for player
-        dirX = Input.acceleration.x * playerSpeed;
-        float xClampPos = Mathf.Clamp(transform.position.x, -xClampThreshold, xClampThreshold);
-        transform.position = new Vector2(xClampPos, transform.position.y);
+        //dirX = Input.acceleration.x * playerSpeed;
+        //float xClampPos = Mathf.Clamp(transform.position.x, -xClampThreshold, xClampThreshold);
+        //transform.position = new Vector2(xClampPos, transform.position.y);
+
+        //Testing code
+        if (photonView.IsMine)
+        {
+            float xOffset = Input.GetAxis("Horizontal") * playerSpeed;
+            float xClampPos = Mathf.Clamp(xOffset, -xClampThreshold, xClampThreshold);
+            transform.position = new Vector2(xClampPos, transform.position.y);
+        }
     }
 
     private void ProcessPlayerVelocity()
