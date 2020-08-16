@@ -7,6 +7,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] Camera FPSCamera;
     [SerializeField] float maxRange = 100f;
     [SerializeField] int weaponDamage = 10;
+    [SerializeField] ParticleSystem muzzleFlashVFX;
     void Update()
     {
         ProcessUserInput();
@@ -21,6 +22,17 @@ public class Weapon : MonoBehaviour
     }
 
     void Shoot()
+    {
+        EmitMuzzleFlashVFX();
+        ProcessRayCast();
+    }
+
+    void EmitMuzzleFlashVFX()
+    {
+        muzzleFlashVFX.Play();
+    }
+
+    void ProcessRayCast()
     {
         RaycastHit hit;
         if (Physics.Raycast(FPSCamera.transform.position, FPSCamera.transform.forward, out hit, maxRange))
