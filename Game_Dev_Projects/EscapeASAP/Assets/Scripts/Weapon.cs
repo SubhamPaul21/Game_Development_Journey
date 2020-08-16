@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [SerializeField] Camera FPSCamera;
+    [SerializeField] float maxRange = 100f;
     void Update()
     {
         ProcessUserInput();
@@ -11,9 +13,18 @@ public class Weapon : MonoBehaviour
 
     void ProcessUserInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Fire1"))
         {
-            print("User clicked left mouse");
+            Shoot();
+        }
+    }
+
+    void Shoot()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(FPSCamera.transform.position, FPSCamera.transform.forward, out hit, maxRange))
+        {
+            print(hit.collider.name);
         }
     }
 }
