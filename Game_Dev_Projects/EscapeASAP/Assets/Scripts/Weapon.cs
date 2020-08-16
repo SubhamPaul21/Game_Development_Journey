@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] float maxRange = 100f;
     [SerializeField] int weaponDamage = 10;
     [SerializeField] ParticleSystem muzzleFlashVFX;
+    [SerializeField] GameObject hitEffectVFX;
+
     void Update()
     {
         ProcessUserInput();
@@ -37,6 +39,7 @@ public class Weapon : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(FPSCamera.transform.position, FPSCamera.transform.forward, out hit, maxRange))
         {
+            CreateHitEffect(hit);
             EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>();
             // If EnemyHealth component found
             if (enemyHealth != null)
@@ -46,5 +49,14 @@ public class Weapon : MonoBehaviour
             // return nothing if EnemyHealth component not found
             else {return;}
         }
+    }
+
+    void CreateHitEffect(RaycastHit hit)
+    {
+        GameObject hitEffect = Instantiate(hitEffectVFX,
+                                        hit.point,
+                                        Quaternion.LookRotation(hit.normal)) as GameObject;
+
+        Destroy(hitEffect, 0.1f);
     }
 }
