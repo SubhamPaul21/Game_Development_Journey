@@ -10,14 +10,18 @@ public class EnemyAI : MonoBehaviour
     NavMeshAgent navMeshAgent;
     bool isProvoked = false;
     float distanceFromTarget = Mathf.Infinity;  
-    // Start is called before the first frame update
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        ProcessEnemyBehaviour();
+    }
+
+    void ProcessEnemyBehaviour()
     {
         distanceFromTarget = Vector3.Distance(target.position, transform.position);
 
