@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] Camera FPSCamera;
     [SerializeField] float maxRange = 100f;
+    [SerializeField] int weaponDamage = 10;
     void Update()
     {
         ProcessUserInput();
@@ -24,7 +25,14 @@ public class Weapon : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(FPSCamera.transform.position, FPSCamera.transform.forward, out hit, maxRange))
         {
-            print(hit.collider.name);
+            EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>();
+            // If EnemyHealth component found
+            if (enemyHealth != null)
+            {
+                enemyHealth.DamageEnemy(weaponDamage);
+            }
+            // return nothing if EnemyHealth component not found
+            else {return;}
         }
     }
 }
