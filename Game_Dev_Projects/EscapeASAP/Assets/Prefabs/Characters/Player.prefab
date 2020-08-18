@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 13600000}
   - component: {fileID: 11400004}
   - component: {fileID: 291639681}
+  - component: {fileID: 4368479921822942262}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -315,6 +316,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 100
+--- !u!114 &4368479921822942262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f64e8e5a1c4945408e4c907adb3f124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomedInFOV: 30
+  zoomedOutFOV: 60
 --- !u!114 &1624772014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FPSCamera: {fileID: 2000000}
   maxRange: 100
-  weaponDamage: 10
+  weaponDamage: 20
   muzzleFlashVFX: {fileID: 4297430314343705774}
   hitEffectVFX: {fileID: 924613852991125521, guid: bbc2db2412b28744e99d2bb12e560fb9,
     type: 3}
