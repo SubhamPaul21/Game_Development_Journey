@@ -11,7 +11,14 @@ public class PlayerHealth : MonoBehaviour
         playerHealth -= damageAmount;
         if (playerHealth <= 0)
         {
-            print("you are dead man!!!!");
+            KillPlayer();
         }
-    } 
+    }
+
+    private void KillPlayer()
+    {
+        SceneLoader sceneLoader = FindObjectOfType<SceneLoader>();
+        if (sceneLoader == null) {return;}
+        sceneLoader.LoadGameOverCanvas();
+    }
 }

@@ -55,7 +55,6 @@ public class EnemyAI : MonoBehaviour
     void AttackTarget()
     {
         animator.SetBool("attack", true);
-        print("Reached near target and attacking it");
     }
 
     void ChaseTarget()
