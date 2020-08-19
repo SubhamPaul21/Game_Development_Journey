@@ -330,6 +330,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoomedInFOV: 30
   zoomedOutFOV: 60
+  zoomedInSensitivity: 1
+  zoomedOutSensitivity: 2
+  fpsCamera: {fileID: 2000000}
 --- !u!114 &1624772014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +351,19 @@ MonoBehaviour:
   muzzleFlashVFX: {fileID: 4297430314343705774}
   hitEffectVFX: {fileID: 924613852991125521, guid: bbc2db2412b28744e99d2bb12e560fb9,
     type: 3}
+--- !u!114 &3856695273918109502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900259928046572595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd201d906e39d54a881af34d3d01178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoAmount: 10
 --- !u!1 &4196275759870161665
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cd8d56469cf64654eaa21e15c6ae7c18, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5
+      value: 1.272
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cd8d56469cf64654eaa21e15c6ae7c18, type: 3}
       propertyPath: m_LocalRotation.x

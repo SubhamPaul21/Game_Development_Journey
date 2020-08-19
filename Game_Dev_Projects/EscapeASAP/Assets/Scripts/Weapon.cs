@@ -10,8 +10,14 @@ public class Weapon : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlashVFX;
     [SerializeField] GameObject hitEffectVFX;
 
+    Ammo ammoSlot;
+    private void Start() 
+    {
+        ammoSlot = GetComponent<Ammo>();
+    }
     void Update()
     {
+        
         ProcessUserInput();
     }
 
@@ -25,8 +31,12 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
-        EmitMuzzleFlashVFX();
-        ProcessRayCast();
+        if (ammoSlot.GetCurrentAmmo() > 0)
+        {
+            ammoSlot.ReduceAmmoOnShoot();
+            EmitMuzzleFlashVFX();
+            ProcessRayCast();
+        }
     }
 
     void EmitMuzzleFlashVFX()
