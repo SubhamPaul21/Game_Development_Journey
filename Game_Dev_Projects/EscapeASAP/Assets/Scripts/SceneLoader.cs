@@ -10,6 +10,7 @@ public class SceneLoader : MonoBehaviour
     {
         Time.timeScale = 0f;
         gameOverCanvas.SetActive(true);
+        FindObjectOfType<WeaponSwitcher>().enabled = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
