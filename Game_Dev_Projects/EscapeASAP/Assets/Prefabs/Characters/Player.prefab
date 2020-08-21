@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 13600000}
   - component: {fileID: 11400004}
   - component: {fileID: 291639681}
+  - component: {fileID: 5410965703636959654}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -315,6 +316,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 100
+--- !u!114 &5410965703636959654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd201d906e39d54a881af34d3d01178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoSlots:
+  - ammoType: 0
+    ammoAmount: 10
+  - ammoType: 1
+    ammoAmount: 15
+  - ammoType: 2
+    ammoAmount: 20
 --- !u!114 &1624772014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,20 +353,8 @@ MonoBehaviour:
   muzzleFlashVFX: {fileID: 4297430314343705774}
   hitEffectVFX: {fileID: 924613852991125521, guid: bbc2db2412b28744e99d2bb12e560fb9,
     type: 3}
+  ammoType: 0
   shootDelay: 0.5
---- !u!114 &3856695273918109502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900259928046572595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fd201d906e39d54a881af34d3d01178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammoAmount: 100
 --- !u!114 &6872511179761090375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,20 +391,8 @@ MonoBehaviour:
   muzzleFlashVFX: {fileID: 4297430314343705774}
   hitEffectVFX: {fileID: 924613852991125521, guid: bbc2db2412b28744e99d2bb12e560fb9,
     type: 3}
+  ammoType: 1
   shootDelay: 1
---- !u!114 &691474327479863957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3721646961501330614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fd201d906e39d54a881af34d3d01178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammoAmount: 15
 --- !u!114 &8565037297000948403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,20 +476,8 @@ MonoBehaviour:
   muzzleFlashVFX: {fileID: 4297430314343705774}
   hitEffectVFX: {fileID: 924613852991125521, guid: bbc2db2412b28744e99d2bb12e560fb9,
     type: 3}
+  ammoType: 2
   shootDelay: 0.2
---- !u!114 &6128263567984883433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5012749380019018478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fd201d906e39d54a881af34d3d01178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ammoAmount: 20
 --- !u!1001 &687905749343387122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -772,15 +756,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5112e6444b23577429168ceb76476ae4, type: 3}
---- !u!1 &5012749380019018478 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 5112e6444b23577429168ceb76476ae4,
-    type: 3}
-  m_PrefabInstance: {fileID: 5012749380018920526}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5012749380018521806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5112e6444b23577429168ceb76476ae4,
+    type: 3}
+  m_PrefabInstance: {fileID: 5012749380018920526}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5012749380019018478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 5112e6444b23577429168ceb76476ae4,
     type: 3}
   m_PrefabInstance: {fileID: 5012749380018920526}
   m_PrefabAsset: {fileID: 0}

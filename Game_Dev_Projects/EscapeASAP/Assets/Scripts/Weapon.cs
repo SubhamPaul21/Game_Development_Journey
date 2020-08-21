@@ -9,14 +9,19 @@ public class Weapon : MonoBehaviour
     [SerializeField] int weaponDamage = 10;
     [SerializeField] ParticleSystem muzzleFlashVFX;
     [SerializeField] GameObject hitEffectVFX;
-
+    [SerializeField] AmmoType ammoType;
     [SerializeField] float shootDelay = 2f;
     Ammo ammoSlot;
     bool canShoot = true;
 
+    private void OnEnable() 
+    {
+        canShoot = true;
+    }
+
     private void Start() 
     {
-        ammoSlot = GetComponent<Ammo>();
+        ammoSlot = FindObjectOfType<Ammo>();
     }
     void Update()
     {
@@ -35,9 +40,9 @@ public class Weapon : MonoBehaviour
     IEnumerator Shoot()
     {
         canShoot = false;
-        if (ammoSlot.GetCurrentAmmo() > 0)
+        if (ammoSlot.GetCurrentAmmo(ammoType) > 0)
         {
-            ammoSlot.ReduceAmmoOnShoot();
+            ammoSlot.ReduceAmmoOnShoot(ammoType);
             EmitMuzzleFlashVFX();
             ProcessRayCast();
         }
