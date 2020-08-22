@@ -20,7 +20,8 @@ public class Ammo : MonoBehaviour
     {
         return GetAmmoSlot(ammoType).ammoAmount;
     }
-
+    
+    // Method to reduce the ammo on shooting
     public void ReduceAmmoOnShoot(AmmoType ammoType)
     {
         GetAmmoSlot(ammoType).ammoAmount--;
@@ -36,5 +37,11 @@ public class Ammo : MonoBehaviour
             }
         }
         return null;
+    }
+
+    // Method to add ammo on pick up
+    public void AddAmmoOnPickup(AmmoType ammoType, int ammoAmount)
+    {
+        GetAmmoSlot(ammoType).ammoAmount += ammoAmount;
     }
 }

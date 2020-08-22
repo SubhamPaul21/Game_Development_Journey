@@ -17,4 +17,5 @@ public class EnemyAttack : MonoBehaviour
         if (playerHealth == null) { return; }
         playerHealth.DamagePlayer(attackDamage);
     }
+    
 }
