@@ -7,7 +7,7 @@ public class PathManager : MonoBehaviour
     [SerializeField] float _xThreshold = -7.7f;
     [SerializeField] List<Mesh> obstacleMeshes;
 
-    private float _scrollSpeed = 2f;
+    private float _scrollSpeed = 3f;
     public float ScrollSpeed
     {
         get
